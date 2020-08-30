@@ -22,3 +22,98 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+# テーブル設計
+
+## users table
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname     | string | null: false |
+| email    | string | null:false, unique: true, index:true|
+| password | string | null: false |
+| frist name｜string｜null:false｜
+| last name｜string｜null:false|
+| family_name_kana｜string|null:false|
+| first_name_kana｜string|null:false|
+| dare of birth｜date|null:false|
+｜comments tableID｜references|
+｜receiver's address tableID｜references|
+｜credit_cards tableID｜references|
+
+### Association
+
+- has_many :comments
+has_many :items,
+has_one :receiver's address
+has_one :credit_card
+
+
+
+## items table 
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| item_img   | references | null: false, foreign_key: true |
+| item_name   | references | null: false, foreign_key: true | category
+| item_condition
+| postage_payer
+| prefecture_code
+| preparation_day
+| Price
+｜comments tableID
+
+
+### Association
+
+- has_many :comments 
+belongs_to :seller, class_name: "User"
+belongs_to :buyer, class_name: "User"
+
+
+## receiver's address table
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| post_code| integer(7)|null:false|
+| prefecture_code    | integer | null: false|
+| city    | string | null: false|
+| house_number｜string|null:false|
+| building_name|string|null:false|
+| phone_number|integer|null:false|
+| user|references	|null: false, foreign_key: true|
+｜users tableID|references	|null: false, foreign_key: true|
+
+
+
+
+### Association
+
+- belongs_to :user
+
+## comments table
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| comment|	text	|null: false|
+|user	|references	|null: false, foreign_key: true|
+|item	|references	|null: false, foreign_key: true|
+|created_at	|timestamp	|null: false|
+
+
+### Association
+
+belongs_to :user
+belongs_to :item
+
+## credit_cards table
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+|card_number|	integer	|null:false, unique: true|
+|expiration_year|	integer|	null:false|
+|expiration_month	|integer|	null:false|
+|security_code	|integer|	null:false|
+|user|	references|	null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
