@@ -42,7 +42,7 @@ Things you may want to cover:
 
 - has_many :comments
 has_many :items,
-has_one :receiver's address
+belongs_to: customer
 
 
 
@@ -51,7 +51,8 @@ has_one :receiver's address
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | img   | references | null: false, foreign_key: true |
-| name   | references | null: false, foreign_key: true | |｜category|string | null: false |
+| name   | references | null: false, foreign_key: true | 
+｜category|integer | null: false |
 |introduction|text|null: false|
 |details|string | null: false |
 | condition|string | null: false |
@@ -61,17 +62,17 @@ has_one :receiver's address
 | ship_cost | integer | null: false |
 | ship_date| integer | null: false |
 
-｜comments tableID|
 
 
 ### Association
 
 - has_many :comments 
-belongs_to :seller, class_name: "User"
-belongs_to :buyer, class_name: "User"
+- has_one :customer
 
 
-## receiver's address table
+
+
+## address table
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -79,7 +80,7 @@ belongs_to :buyer, class_name: "User"
 | prefecture_code    | integer | null: false|
 | city    | string | null: false|
 | house_number｜string|null:false|
-| building_name|string|null:false|
+| building_name|string|
 | phone_number|string|null:false|
 
 
@@ -88,8 +89,7 @@ belongs_to :buyer, class_name: "User"
 
 ### Association
 
-- belongs_to :user
-- belongs_to :buyer 
+- belongs_to : customer
 
 ## comments table
 
@@ -102,20 +102,18 @@ belongs_to :buyer, class_name: "User"
 
 
 ### Association
-
 belongs_to :user
 belongs_to :item
 
 
-## buyer table
+
+## customer table
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| email    | string | null:false, unique: true, index:true|
-| password | string | null: false |
 user_id
 item_id
 ### Association
 - has_many :item
 - has_many :user
-- has_one :receiver's address 
+- has_one : address 
