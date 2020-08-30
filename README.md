@@ -42,7 +42,7 @@ Things you may want to cover:
 
 - has_many :comments
 has_many :items,
-belongs_to: customer
+has_many: customer
 
 
 
@@ -51,11 +51,11 @@ belongs_to: customer
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | img   | references | null: false, foreign_key: true |
-| name   | references | null: false, foreign_key: true | 
+| name   | string | null: false| 
 ｜category|integer | null: false |
 |introduction|text|null: false|
-|details|string | null: false |
-| condition|string | null: false |
+|details|string | integer: false |
+| condition|string | integer: false |
 | prefecture_code| integer | null: false |
 | preparation_day| integer | null: false |
 | Price| integer | null: false |
@@ -111,8 +111,8 @@ belongs_to :item
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-user_id
-item_id
+｜user_id |references|null: false, foreign_key: true
+|item_id |references|null: false, foreign_key: true
 ### Association
 - has_many :item
 - has_many :user
