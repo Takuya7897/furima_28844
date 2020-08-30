@@ -36,9 +36,7 @@ Things you may want to cover:
 | family_name_kana｜string|null:false|
 | first_name_kana｜string|null:false|
 | dare_of_birth｜date|null:false|
-<!-- ｜comments tableID｜references|
-｜receiver's address tableID｜references|
-｜credit_cards tableID｜references| -->
+
 
 ### Association
 
@@ -53,15 +51,15 @@ has_one :receiver's address
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | img   | references | null: false, foreign_key: true |
-| name   | references | null: false, foreign_key: true | |category|string | null: false |
+| name   | references | null: false, foreign_key: true | |｜category|string | null: false |
 |introduction|text|null: false|
 |details|string | null: false |
 | condition|string | null: false |
-| prefecture_code| string | null: false |
-| preparation_day| string | null: false |
-| Price| string | null: false |
-| ship_cost | string | null: false |
-| ship_date| string | null: false |
+| prefecture_code| integer | null: false |
+| preparation_day| integer | null: false |
+| Price| integer | null: false |
+| ship_cost | integer | null: false |
+| ship_date| integer | null: false |
 
 ｜comments tableID|
 
@@ -77,14 +75,13 @@ belongs_to :buyer, class_name: "User"
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| post_code| integer(7)|null:false|
+| post_code|string|null:false|
 | prefecture_code    | integer | null: false|
 | city    | string | null: false|
 | house_number｜string|null:false|
 | building_name|string|null:false|
-| phone_number|integer|null:false|
-| user|references	|null: false, foreign_key: true|
-｜users tableID|references	|null: false, foreign_key: true|
+| phone_number|string|null:false|
+
 
 
 
@@ -92,6 +89,7 @@ belongs_to :buyer, class_name: "User"
 ### Association
 
 - belongs_to :user
+- belongs_to :buyer 
 
 ## comments table
 
@@ -108,15 +106,16 @@ belongs_to :buyer, class_name: "User"
 belongs_to :user
 belongs_to :item
 
-<!-- ## credit_cards table
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-|card_number|	integer	|null:false, unique: true|
-|expiration_year|	integer|	null:false|
-|expiration_month	|integer|	null:false|
-|security_code	|integer|	null:false|
-|user|	references|	null: false, foreign_key: true|
+## buyer table
 
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| email    | string | null:false, unique: true, index:true|
+| password | string | null: false |
+user_id
+item_id
 ### Association
-- belongs_to :user -->
+- has_many :item
+- has_many :user
+- has_one :receiver's address 
