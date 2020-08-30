@@ -35,17 +35,16 @@ Things you may want to cover:
 | last name｜string｜null:false|
 | family_name_kana｜string|null:false|
 | first_name_kana｜string|null:false|
-| dare of birth｜date|null:false|
-｜comments tableID｜references|
+| dare_of_birth｜date|null:false|
+<!-- ｜comments tableID｜references|
 ｜receiver's address tableID｜references|
-｜credit_cards tableID｜references|
+｜credit_cards tableID｜references| -->
 
 ### Association
 
 - has_many :comments
 has_many :items,
 has_one :receiver's address
-has_one :credit_card
 
 
 
@@ -53,14 +52,18 @@ has_one :credit_card
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| item_img   | references | null: false, foreign_key: true |
-| item_name   | references | null: false, foreign_key: true | category
-| item_condition
-| postage_payer
-| prefecture_code
-| preparation_day
-| Price
-｜comments tableID
+| img   | references | null: false, foreign_key: true |
+| name   | references | null: false, foreign_key: true | |category|string | null: false |
+|introduction|text|null: false|
+|details|string | null: false |
+| condition|string | null: false |
+| prefecture_code| string | null: false |
+| preparation_day| string | null: false |
+| Price| string | null: false |
+| ship_cost | string | null: false |
+| ship_date| string | null: false |
+
+｜comments tableID|
 
 
 ### Association
@@ -105,7 +108,7 @@ belongs_to :buyer, class_name: "User"
 belongs_to :user
 belongs_to :item
 
-## credit_cards table
+<!-- ## credit_cards table
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -116,4 +119,4 @@ belongs_to :item
 |user|	references|	null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user -->
