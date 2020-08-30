@@ -42,7 +42,7 @@ Things you may want to cover:
 
 - has_many :comments
 has_many :items,
-has_many: customer
+has_many: customers
 
 
 
@@ -111,9 +111,9 @@ belongs_to :item
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-｜user_id |references|null: false, foreign_key: true
-|item_id |references|null: false, foreign_key: true
+｜user |references|null: false, foreign_key: true
+|item |references|null: false, foreign_key: true
 ### Association
-- has_many :item
-- has_many :user
+- belongs_to :item
+- belongs_to :user
 - has_one : address 
