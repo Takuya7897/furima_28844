@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items= Items.find(params[:id])
+    @items = Items.find(params[:id])
   end
 
   def create
@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-   
   end
 
   def show
@@ -26,5 +25,4 @@ class ItemsController < ApplicationController
 
   def items_params
   end
-
 end
