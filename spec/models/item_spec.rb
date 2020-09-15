@@ -66,8 +66,14 @@ describe Item do
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
 
-      it '価格の範囲が、¥300~¥9,999,999の間ではないとき' do
+      it '価格の下限が、¥300の間ではないとき' do
         @item.price = '10'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+
+      it '価格の上限が、¥9,999,999のではないとき' do
+        @item.price = '9,999,9999'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
