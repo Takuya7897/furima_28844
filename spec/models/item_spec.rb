@@ -48,34 +48,63 @@ describe Item do
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship cost can't be blank")
       end
-      it '発送元の地域についての情報ががないとき' do
+      it '発送元の地域についての情報がないとき' do
         @item.prefecture_code_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture code can't be blank")
       end
 
-      it '発送までの日数についての情報ががないとき' do
+      it '発送までの日数についての情報がないとき' do
         @item.ship_date_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship date can't be blank")
       end
 
-      it '価格についての情報ががないとき' do
+      it '価格についての情報がないとき' do
         @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
 
-      it '価格の範囲が、¥300~¥9,999,999の間であること' do
+      it '価格の範囲が、¥300~¥9,999,999の間ではないとき' do
         @item.price = '10'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
 
-      it '販売価格は半角数字のみ入力可能であること' do
+      it '販売価格は半角数字のみ入力可能ではないとき' do
         @item.price = '数字'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
+      end
+
+      it 'category_id,の値がid 1 のとき保存されない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+
+      it 'condition_idの値がid 1 のとき保存されない' do
+        @item.condition_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+      end
+
+      it 'prefecture_code_idの値がid 1 のとき保存されない' do
+        @item.prefecture_code_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture code must be other than 1')
+      end
+
+      it 'ship_cost_idの値がid 1 のとき保存されない' do
+        @item.ship_cost_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Ship cost must be other than 1')
+      end
+      it 'ship_date_idの値がid 1 のとき保存されない' do
+        @item.ship_date_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Ship date must be other than 1')
       end
     end
   end
