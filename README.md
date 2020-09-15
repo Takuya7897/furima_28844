@@ -58,7 +58,7 @@ has_many: customers
 | condition|string | integer: false |
 | prefecture_code| integer | null: false |
 | preparation_day| integer | null: false |
-| Price| integer | null: false |
+| price| integer | null: false |
 | ship_cost | integer | null: false |
 | ship_date| integer | null: false |
 
