@@ -4,11 +4,11 @@ class Item < ApplicationRecord
   # Associations
   has_one :customer
   has_many :comments
-  
+
   has_one_attached :image
-  
+
   belongs_to_active_hash :category
-  belongs_to_active_hash :condition	
+  belongs_to_active_hash :condition
   belongs_to_active_hash :prefecture_code
   belongs_to_active_hash :ship_cost
   belongs_to_active_hash :ship_date
@@ -26,8 +26,7 @@ class Item < ApplicationRecord
     validates :ship_cost_id
     validates :ship_date_id
   end
- 
-  validates_inclusion_of :price, in: 300..9_999_999 
+
+  validates_inclusion_of :price, in: 300..9_999_999
   # // validates
-  
 end
