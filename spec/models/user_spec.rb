@@ -63,12 +63,12 @@ describe User do
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
 
-      it '- ユーザー本名が、名字と名前がそれぞれ必須であること' do
+      it '- ユーザー本名が、名字と名前がそれぞれがないとき' do
         @user.first_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
-      it '- ユーザー本名が、名字と名前がそれぞれ必須であること' do
+      it '- ユーザー本名が、名字と名前がそれぞれがないとき' do
         @user.last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
@@ -84,13 +84,13 @@ describe User do
         expect(@user.errors.full_messages).to include('Last name 全角文字を使用してください')
       end
 
-      it "- ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること
+      it "- ユーザー本名のフリガナが、名字と名前でそれぞれがないとき
       " do
         @user.first_name_kana = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
-      it "- ユーザー本名のフリガナが、名字と名前でそれぞれ必須であること
+      it "- ユーザー本名のフリガナが、名字と名前でそれぞれがないとき
       " do
         @user.last_name_kana = ''
         @user.valid?
@@ -106,7 +106,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana 全角文字を使用してください')
       end
-      it '- 生年月日が必須であること      ' do
+      it '- 生年月日ががないとき      ' do
         @user.date_of_birth = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Date of birth can't be blank")
