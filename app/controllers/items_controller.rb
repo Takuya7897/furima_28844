@@ -22,9 +22,6 @@ class ItemsController < ApplicationController
   def destroy
   end
 
-  def edit
-  end
-
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
@@ -32,9 +29,6 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def show
   end
 
   private
