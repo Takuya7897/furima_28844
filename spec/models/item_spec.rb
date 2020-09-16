@@ -73,7 +73,7 @@ describe Item do
       end
 
       it '価格の上限が、¥9,999,999のではないとき' do
-        @item.price = '9,999,9999'
+        @item.price = '10,000,000'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not included in the list')
       end
