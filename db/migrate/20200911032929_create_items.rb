@@ -13,7 +13,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :ship_date_id, foreign_key: true
       t.integer :condition_id, foreign_key: true
 
-
+      t.timestamps null: false
     end
   end
 end
