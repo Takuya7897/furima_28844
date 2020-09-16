@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_09_15_030802) do
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_customers_on_item_id"
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
@@ -50,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_09_15_030802) do
     t.integer "ship_cost_id"
     t.integer "ship_date_id"
     t.integer "condition_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
