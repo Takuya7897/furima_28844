@@ -1,16 +1,14 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_customer, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @customer = Customer.new
     redirect_to root_path if !@item.customer.nil? || current_user.id == @item.user_id
   end
 
   def create
-    # binding.pry
     @customer = UserCustomer.new(customer_params)
-    @item = Item.find(params[:item_id])
     if @customer.valid?
       pay_item
       @customer.save
@@ -29,10 +27,13 @@ class CustomersController < ApplicationController
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      # amount: customer_params[:price],
       amount: @item.price,
       card: customer_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_customer
+    @item = Item.find(params[:item_id])
   end
 end

@@ -5,7 +5,8 @@ FactoryBot.define do
     prefecture_id     { 2 }
     city              { '横浜' }
     house_number      { '青山 1-1-1' }
-
+    building_name     { '高丸' }
+    token             { 'gfsjdghjkg' }
     # テーブルを作るものはアソシエーションを記載する。
     association :user, :item, :address
   end

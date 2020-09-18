@@ -14,6 +14,7 @@ class UserCustomer
 
   # 「カードの情報」に関するバリデーション
   validates :item_id, presence: true
+  validates :token, presence: true
   # // validates
 
   # 2つの情報を保存するための記述をしましょう

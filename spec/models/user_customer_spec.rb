@@ -8,8 +8,12 @@ RSpec.describe UserCustomer, type: :model do
 
   describe '商品購入機能' do
     context '商品購入機能がうまくいくとき' do
-      # binding.pry
-      it 'post_code, phone_number, prefecture_id, city, house_number,user, item が存在すれば登録できる' do
+      it 'post_code, phone_number, prefecture_id, city, house_number,user, item, building_name, tokenが存在すれば登録できる' do
+        expect(@user_customer).to be_valid
+      end
+
+      it '建物名が空の時でも登録できる' do
+        @user_customer.building_name = ''
         expect(@user_customer).to be_valid
       end
     end
@@ -37,15 +41,19 @@ RSpec.describe UserCustomer, type: :model do
       it '配送先の情報として、市区町村必須であること' do
         @user_customer.city = ''
         @user_customer.valid?
-        # binding.pry
         expect(@user_customer.errors.full_messages).to include("City can't be blank")
       end
 
       it '配送先の情報として、番地必須であること' do
         @user_customer.house_number = ''
         @user_customer.valid?
-        # binding.pry
         expect(@user_customer.errors.full_messages).to include("House number can't be blank")
+      end
+
+      it 'token が空の時' do
+        @user_customer.token = ''
+        @user_customer.valid?
+        expect(@user_customer.errors.full_messages).to include("Token can't be blank")
       end
 
       it '郵便番号にハイフンがない時' do
@@ -67,14 +75,13 @@ RSpec.describe UserCustomer, type: :model do
       end
 
       it '電話番号は11桁以内ない時' do
-        @user_customer.phone_number = ''
+        @user_customer.phone_number = '1111111111111111111111'
         @user_customer.valid?
-        expect(@user_customer.errors.full_messages).to include("Phone number can't be blank")
+        expect(@user_customer.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'prefecture_idの値がid 1 のとき' do
         @user_customer.prefecture_id = '1'
-        # binding.pry
         @user_customer.valid?
         expect(@user_customer.errors.full_messages).to include('Prefecture must be other than 1')
       end
