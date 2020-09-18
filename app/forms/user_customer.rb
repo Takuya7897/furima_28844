@@ -10,12 +10,12 @@ class UserCustomer
     validates :city
     validates :house_number
     validates :prefecture_id, numericality: { other_than: 1 }
+    # 「カードの情報」に関するバリデーション
+    validates :item_id
+    validates :token
+    # // validates
   end
 
-  # 「カードの情報」に関するバリデーション
-  validates :item_id, presence: true
-  validates :token, presence: true
-  # // validates
 
   # 2つの情報を保存するための記述をしましょう
   def save
