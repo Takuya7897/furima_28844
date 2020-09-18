@@ -3,7 +3,7 @@
 <div class='transaction-contents'>
   <div class='transaction-main'>
     <%= form_with  url: item_customers_path, id: 'charge-form', class: 'card-form',local: true do |f| %>
-    <%= render 'shared/error_messages', model: @customer %>
+    <%= render 'shared/error_messages', model: @UserCustomer %>
       <h1 class='transaction-title-text'>
         購入内容の確認
       </h1>

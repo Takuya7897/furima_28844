@@ -3,15 +3,15 @@ class CustomersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    @customer = Customer.new
+    @UserCustomer = Customer.new
     redirect_to root_path if !@item.customer.nil? || current_user.id == @item.user_id
   end
 
   def create
     @UserCustomer = UserCustomer.new(customer_params)
-    if @customer.valid?
+    if @UserCustomer.valid?
       pay_item
-      @customer.save
+      @UserCustomer.save
       redirect_to root_path
     else
       render 'index'
