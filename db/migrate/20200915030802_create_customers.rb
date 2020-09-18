@@ -3,6 +3,7 @@ class CreateCustomers < ActiveRecord::Migration[6.0]
     create_table :customers do |t|
       t.references :user, foreign_key: true
       t.references :item, foreign_key: true
+
       t.timestamps null: false
     end
   end

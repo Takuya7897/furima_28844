@@ -40,9 +40,9 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :comments
-has_many :items,
-has_many: customers
+-has_many :comments
+-has_many :items,
+-has_one :customer, dependent: :destroy
 
 
 
