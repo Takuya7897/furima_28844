@@ -1,6 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
     // 要素の取り出し
-    console.log(22222)
     const priceInput = document.getElementById("item-price");
     const addTax = document.getElementById("add-tax-price");
     const profit = document.getElementById("profit");

@@ -1,4 +1,3 @@
-console.log("hoge")
 const pay = () => {
   Payjp.setPublicKey("pk_test_70940102597dd56c9c993bbb"); // PAY.JPテスト公開鍵
   const form = document.getElementById("charge-form");
