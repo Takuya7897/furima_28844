@@ -7,16 +7,18 @@ class User < ApplicationRecord
   # Associations
   has_many :comments
   has_many :items
-  has_many :customers
+  has_one :customers, dependent: :destroy
   # // Associations
 
   # validates
-  validates :date_of_birth, presence: true
+  with_options presence: true do
+    validates :date_of_birth
+    validates :nickname
+  end
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
     validates :first_name
     validates :last_name
-    validates :nickname
   end
 
   with_options presence: true, format: { with: /\A[ァ-ン]+\z/, message: '全角文字を使用してください' } do
