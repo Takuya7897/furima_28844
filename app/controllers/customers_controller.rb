@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_customer, only: [:index, :create]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @customer = Customer.new
@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = UserCustomer.new(customer_params)
+    @UserCustomer = UserCustomer.new(customer_params)
     if @customer.valid?
       pay_item
       @customer.save
@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
     )
   end
 
-  def set_customer
+  def set_item
     @item = Item.find(params[:item_id])
   end
 end

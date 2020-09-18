@@ -2,10 +2,8 @@ console.log("hoge")
 const pay = () => {
   Payjp.setPublicKey("pk_test_70940102597dd56c9c993bbb"); // PAY.JPテスト公開鍵
   const form = document.getElementById("charge-form");
-  // const form = document.getElementsByTagName("form");
-  // form.addEventListener("submit", (e) => { //待ちはできてる、発火だけしない
+ 
   form.addEventListener("submit", (e) => {
-    // e.preventDefault();
     e.preventDefault();
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
