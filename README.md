@@ -40,7 +40,6 @@ Things you may want to cover:
 
 ### Association
 
--has_many :comments
 -has_many :items,
 -has_one :customer, dependent: :destroy
 
@@ -66,7 +65,6 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :comments 
 - has_one :customer
 
 
@@ -90,21 +88,6 @@ Things you may want to cover:
 ### Association
 
 - belongs_to : customer
-
-## comments table
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| comment|	text	|null: false|
-|user	|references	|null: false, foreign_key: true|
-|item	|references	|null: false, foreign_key: true|
-|created_at	|timestamp	|null: false|
-
-
-### Association
-belongs_to :user
-belongs_to :item
-
 
 
 ## customer table
